@@ -12,4 +12,12 @@ Category: 'Category'
 ;
 
 Product: 'Product'
+	id=INT
+	name=STRING
+	image=IMAGE '=' symbol=STRING
+	price=INT
+	tags+=STRING
+	description=STRING
 ;
+
+terminal IMAGE: ('A'..'Z'|'a'..'z'|'0'..'9')*'.''img'|'png'|'jpeg';
