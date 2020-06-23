@@ -16,8 +16,12 @@ Product: 'Product'
 	name=STRING
 	image=IMAGE '=' symbol=STRING
 	price=PRICE '=' symbol=STRING //?
-	tags+=STRING
+	tags+=Tag*
 	description=STRING
+;
+
+Tag: 'Tag'
+	name=STRING
 ;
 
 terminal IMAGE: ('A'..'Z'|'a'..'z'|'0'..'9')*'.''img'|'png'|'jpeg';
