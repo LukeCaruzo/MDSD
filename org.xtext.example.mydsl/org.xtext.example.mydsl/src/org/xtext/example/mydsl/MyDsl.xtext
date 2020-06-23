@@ -2,8 +2,14 @@ grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 
 generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Category: 'Category' 
+	id=INT 
+	name=STRING 
+	products+=Product*
+	'batchPriceIncrease' price=INT
+	'batchPriceDecrease' price=INT
+	'calculateVolumeDiscount' discount=INT
+;
+
+Product: 'Product'
+;
