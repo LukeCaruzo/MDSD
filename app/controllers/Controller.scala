@@ -9,14 +9,14 @@ import scala.concurrent.{ExecutionContext, Future}
 import service._
 
 @Singleton
-class Controller @Inject()(val controllerComponents: ControllerComponents)(using ec: ExecutionContext) extends BaseController:
+class Controller @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   type ItemResult = List[Item]
 
-  def (input: String).parse: ItemResult = InputParser.inputParse(input)
+  def parse(input: String): ItemResult = InputParser.inputParse (input)
 
-  //def (input: ItemResult).transform: Either[List[Item], List[Error]] = ItemTransformer(input)
-
-  def index(): Action[String] = 
-    Action.async(parse.text) { 
-          request => Future.successful(Ok(views.html.catalogue(request.body.parse)))
+  def index (): Action[String] = {
+    Action.async (parse.text) {
+      request => Future.successful (Ok (views.html.catalogue (parse(request.body))))
     }
+  }
+}
