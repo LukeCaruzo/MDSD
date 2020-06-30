@@ -17,10 +17,19 @@ import scala.concurrent.Future
  *
  * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
  */
-class ControllerTest extends PlaySpec with GuiceOneAppPerTest{
+class ControllerTest extends PlaySpec with GuiceOneAppPerTest {
   val example = """
   |catalogue 0 Bekleidung 
   |product 0 T-Shirt /path/to/image 99 checked tshirt
   |product 0 Hemd /path/to/image 99 striped hemd
   |""".stripMargin
+
+  @Test def test(): Unit = {
+    given ec as scala.concurrent.ExecutionContext = scala.concurrent.ExecutionContext.global
+    val controller = new Controller(stubControllerComponents())
+    val request = FakeRequest(POST, "/").withHeaders(HOST -> "localhost:9000").withBody(example)
+    val home:Future[Result] = route(app, request).get
+
+    assertEquals(status(home),OK)
+  }
 }
