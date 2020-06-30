@@ -18,5 +18,9 @@ import scala.concurrent.Future
  * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
  */
 class ControllerTest extends PlaySpec with GuiceOneAppPerTest{
-
+  val example = """
+  |catalogue 0 Bekleidung 
+  |product 0 T-Shirt /path/to/image 99 checked tshirt
+  |product 0 Hemd /path/to/image 99 striped hemd
+  |""".stripMargin
 }
