@@ -1,5 +1,5 @@
 package model
 
-import model.CatalogueTrait
+import model.Item
 
-case class Catalogue(id: Int, name: String, products : List[Product]) extends CatalogueTrait(id, name)
+case class Catalogue(id: Int, name: String, products : List[Item]) extends Item(id, name)
