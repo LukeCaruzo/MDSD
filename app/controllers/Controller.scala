@@ -20,6 +20,6 @@ class Controller @Inject()(val controllerComponents: ControllerComponents)(using
   def index(): Action[String] = 
     Action.async(parse.text) { 
           request => request.body.parse.transform match
-                case Left(catalogue) => Future.successful(Ok(views.html.products(catalogue)))
+                case Left(catalogue) => Future.successful(Ok(views.html.catalogue(catalogue)))
                 case Right(error) => Future.successful(BadRequest(views.html.error(error)))
     }

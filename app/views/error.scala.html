@@ -1,0 +1,13 @@
+@(errors: List[service.ErrorHandle])
+@import service.ErrorHandle
+@import service.ErrorConverter.DisplayError
+
+@main("Auto generated items") {
+    @for(error <- errors) {
+        <h1>@error.header</h1>
+        @if(error.pos.isDefined) {
+            <p>At Position: @error.pos</p>
+        }
+        <p>Message: @error.msg</p>       
+    }
+}
