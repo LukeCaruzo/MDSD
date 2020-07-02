@@ -1,0 +1,5 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/conf/logback.xml,/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/target/scala-0.25/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/conf/messages,/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/target/scala-0.25/classes/messages)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/conf/application.conf,/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/target/scala-0.25/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/conf/routes,/Users/lucas/Documents/HTWG/Master/MDSD/MDSD/target/scala-0.25/classes/routes)[0m
