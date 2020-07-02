@@ -36,7 +36,7 @@ class Parser extends RegexParsers {
   private def catalogueIdentifier: Parser[Catalogue] = "catalogue" ~> catalogue
 
   //item matcher
-  private def item: Parser[Item] = productIdentifier
+  private def item: Parser[Item] = catalogueIdentifier | productIdentifier
 
   private def itemStructureIdentifier: Parser[Catalogue] =
     catalogueIdentifier ~ rep1(item) ^^ { case c ~ i => c.copy(items = i) }
