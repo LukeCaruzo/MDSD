@@ -1,8 +1,0 @@
-[0m[[0m[33mwarn[0m] [0m[0mFlag -language set repeatedly[0m
-[0m[[0m[31merror[0m] [0m[0m[31m-- Error: /Users/lucas/Documents/HTWG/Master/MDSD/MDSD/test/controllers/ControllerTest.scala:29:21 [0m[0m
-[0m[[0m[31merror[0m] [0m[0m[31m29 |[0m    [33mval[0m [36mcontroller[0m = [33mnew[0m [35mController[0m()[0m
-[0m[[0m[31merror[0m] [0m[0m   |                     [31m^^^^^^^^^^^^^^^^[0m[0m
-[0m[[0m[31merror[0m] [0m[0m   |missing argument for parameter controllerComponents of [33mconstructor[0m [35mController[0m: (controllerComponents: play.api.mvc.ControllerComponents)[0m
-[0m[[0m[31merror[0m] [0m[0m   |  ([33musing [0mec: concurrent.ExecutionContext): controllers.Controller[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0mCould not find Visual Studio Code on your system.[0m
-[0m[[0m[31merror[0m] [0m[0mFollow the instructions at https://dotty.epfl.ch/docs/usage/ide-support.html[0m
-[0m[[0m[31merror[0m] [0m[0mto install it.[0m
-[0m[[0m[31merror[0m] [0m[0m(ThisBuild / [31mrunCode[0m) Could not find Visual Studio Code on your system.[0m
