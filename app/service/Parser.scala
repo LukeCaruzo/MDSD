@@ -12,7 +12,7 @@ object InputParser extends Parser {
 
 class Parser extends RegexParsers {
   //basic type
-  private def text: Parser[String] = """[^\d]+""".r ^^ (_.toString)
+  private def text: Parser[String] = """[^\v\s\d]+""".r ^^ (_.toString)
   private def integer: Parser[Int] = """(0|[1-9]\d*)""".r ^^ (_.toInt)
 
   //shape parameters
@@ -25,7 +25,7 @@ class Parser extends RegexParsers {
 
   //item creator
   private def product: Parser[Product] =
-    id ~ name ~ image ~ price ~ tags ~ description ^^ { case id ~ n ~ i ~ p ~ t ~ d => Product(id, n, i, p, t, d) }
+    id ~ name ~ image ~ price ~ tags ~ description ^^ { case i ~ n ~ j ~ p ~ t ~ d => Product(i, n, j, p, t, d) }
 
   private def catalogue: Parser[Catalogue] =
     id ~ name ^^ { case id ~ n => Catalogue(id, n, List()) }
@@ -36,7 +36,7 @@ class Parser extends RegexParsers {
   private def catalogueIdentifier: Parser[Catalogue] = "catalogue" ~> catalogue
 
   //item matcher
-  private def item: Parser[Item] = catalogueIdentifier | productIdentifier
+  private def item: Parser[Item] = productIdentifier
 
   private def itemStructureIdentifier: Parser[Catalogue] =
     catalogueIdentifier ~ rep1(item) ^^ { case c ~ i => c.copy(items = i) }
