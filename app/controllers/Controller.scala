@@ -12,11 +12,11 @@ import service._
 class Controller @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   type ItemResult = List[Item]
 
-  def parse(input: String): ItemResult = InputParser.inputParse (input)
-
-  def index (): Action[String] = {
-    Action.async (parse.text) {
-      request => Future.successful (Ok (views.html.catalogue (parse(request.body))))
+  def catalogue(): Action[String] = {
+    Action.async(parse.text) {
+      request => Future.successful(Ok(views.html.catalogue(parse(request.body))))
     }
   }
+
+  def parse(input: String): ItemResult = InputParser.inputParse(input)
 }
