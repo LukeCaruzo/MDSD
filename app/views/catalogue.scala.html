@@ -2,43 +2,35 @@
 @import model._
 
 @product(p: Product) = {
-<div class="container">
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="image">Image Product @p.name @p.id</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="image">@p.image</div>
+            </div>
+            <div class="col-sm-7">
+                <h3 class="font-weight-normal">Name: @p.name</h3>
+                <p class="font-weight-light">Item number: @p.id</p>
+                <p class="font-weight-light">@p.price €</p>
+                <p class="font-weight-light">@p.description</p>
+                <p class="font-weight-light">@p.tags</p>
+            </div>
         </div>
-    <div class="col-sm-7">
-            <h3 class="font-weight-normal">Product: @p.name</h3>
-            <p class="font-weight-light">@p.price €</p>
-            <p class="font-weight-light">@p.description</p>
-            <p class="font-weight-light">@p.tags</p>
-            <p class="font-weight-light">Item number: @p.id</p>
-        </div>
+        <hr>
     </div>
-    <hr>
-</div>
-
-<!--    <h3 class="font-weight-normal">Product: @p.name</h3>
-    <p class="font-weight-light">@p.price €</p>
-    <p class="font-weight-light">@p.description</p>
-    <p class="font-weight-light">@p.tags</p>
-    <p class="font-weight-light">Item number: @p.id</p>
-    <hr>-->
-
 }
 
 @displayCatalogue(c: Catalogue) = {
-<div class="jumbotron text-center">
-    <h1>@c.name</h1>
-</div>
+    <div class="jumbotron text-center">
+        <h1>Kategorie: @c.name</h1>
+        <hr>
+    </div>
     @for(item <- c.items) {
         @displayItem(item)
     }
-
 }
 
 @displayItem(item: Item) = {
-    @if(item.isInstanceOf[Product]){
+    @if(item.isInstanceOf[Product]) {
         @product(item.asInstanceOf[Product])
     } else if(item.isInstanceOf[Catalogue]) {
         @displayCatalogue(item.asInstanceOf[Catalogue])
