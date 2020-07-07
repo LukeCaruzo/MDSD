@@ -37,7 +37,7 @@
     }
 }
 
-@main("Auto generated items") {
+@main("Auto generated catalogue") {
     @for(item <- items) {
         @if(item.isInstanceOf[Catalogue]) {
             @displayCatalogue(item.asInstanceOf[Catalogue])

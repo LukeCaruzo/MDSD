@@ -1,5 +1,6 @@
-@()
+@(error: ErrorModel)
 
 @main("Error") {
-    <h1>An error occured!</h1>
+    <h1>ERROR</h1>
+    <p>FAILED PARSING IN LINE @error.pos: @error.msg WITH @error.extra</p>
 }

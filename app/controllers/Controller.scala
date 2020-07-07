@@ -10,13 +10,16 @@ import service._
 
 @Singleton
 class Controller @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
-  type ItemResult = List[Item] 
+  type ItemResult = Either[ErrorModel, List[Item]]
 
   def catalogue(): Action[String] = {
     Action.async(parse.text) { 
-      request => Future.successful(Ok(views.html.catalogue(parse(request.body))))
+      request => parse(request.body) match {
+        case Right(items) => Future.successful(Ok(views.html.catalogue(items)))
+        case Left(error) => Future.successful(Ok(views.html.error(error)))
+      }
     }
   }
 
-  def parse(input: String): List[Item] = InputParser.inputParse(input)
+  def parse(input: String): ItemResult = InputParser.inputParse(input)
 }

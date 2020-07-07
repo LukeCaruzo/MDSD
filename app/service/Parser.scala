@@ -4,9 +4,12 @@ import scala.util.parsing.combinator._
 import model._
 
 object InputParser extends Parser {
-  def inputParse(input: String): List[Item] =
+  def inputParse(input: String): Either[ErrorModel, List[Item]] =
     parseAll(catalogueParser, input) match {
-      case Success(matched, _) => matched
+      case Success(matched, _) => Right(matched)
+      case NoSuccess(msg, next) =>
+        val pos = next.pos
+        Left(ErrorModel(pos.line, msg, pos.longString))
     }
 }
 
