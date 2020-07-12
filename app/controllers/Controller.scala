@@ -7,6 +7,7 @@ import play.api.mvc._
 import play.api.libs.json._
 import scala.concurrent.{ExecutionContext, Future}
 import service._
+import service.Transformer
 
 @Singleton
 class Controller @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -14,12 +15,14 @@ class Controller @Inject()(cc: ControllerComponents) extends AbstractController(
 
   def catalogue(): Action[String] = {
     Action.async(parse.text) { 
-      request => parse(request.body) match {
+      request => transform(parse(request.body)) match {
         case Right(items) => Future.successful(Ok(views.html.catalogue(items)))
         case Left(error) => Future.successful(Ok(views.html.error(error)))
       }
     }
   }
+
+  def transform(input: ItemResult): ItemResult = Transformer(input)
 
   def parse(input: String): ItemResult = InputParser.inputParse(input)
 }
