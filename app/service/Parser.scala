@@ -14,11 +14,11 @@ object InputParser extends Parser {
 }
 
 class Parser extends RegexParsers {
-  //basic type
+  //basic types
   private def text: Parser[String] = """[^\v\s\d]+""".r ^^ (_.toString)
   private def integer: Parser[Int] = """(0|[1-9]\d*)""".r ^^ (_.toInt)
 
-  //shape parameters
+  //item parameters
   private def id: Parser[Int] = integer
   private def name: Parser[String] = text
   private def image: Parser[String] = text
